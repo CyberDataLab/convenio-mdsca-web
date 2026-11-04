@@ -3,6 +3,7 @@ import { defineConfig } from 'vite'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/web-convenio/',
+  // GitHub Pages sirve los repositorios de proyecto bajo /<nombre-del-repo>/.
+  base: '/convenio-mdsca-web/',
   plugins: [react()],
 })

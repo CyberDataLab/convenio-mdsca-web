@@ -1,13 +1,21 @@
-# lucia
-
-Base web institucional para presentar un proyecto de investigación desarrollado en convenio con la administración pública.
+# WEB CONVENIO MDSCA
 
 ## Desarrollo
+
+## Despliegue local
 
 ```bash
 npm install
 npm run dev
 ```
+
+## Despliegue en github Pages
+
+ - Subir cambios a la rama `main` del repositorio.
+ - Si el workflow de GitHub Actions no está activo, ir a **Actions → Deploy to GitHub Pages → Run workflow**.
+ - Activar el workflow de GitHub Actions en **Actions → Deploy to GitHub Pages → Run workflow**.
+ - Seleccionar la rama `main` y pulsar **Run workflow**.
+ - Esperar a que finalice el workflow y comprobar que la web se ha publicado.
 
 ## Personalización
 
@@ -31,9 +39,3 @@ Rutas disponibles:
 - `/actualidad` — archivo de noticias con filtros por categoría.
 
 Antes de publicar, sustituye los datos de muestra y conecta los enlaces de cada noticia con su página o gestor de contenidos.
-
-## Despliegue en GitHub Pages
-
-Cada envío a la rama `main` compila y publica automáticamente la web mediante GitHub Actions. En la configuración del repositorio, selecciona **Settings → Pages → Source → GitHub Actions**.
-
-La web está configurada para publicarse en `/web-convenio/` y utiliza rutas con `#` para que las páginas internas funcionen también al recargar, por ejemplo `/web-convenio/#/actualidad`.
