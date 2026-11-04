@@ -3,7 +3,7 @@ import { defineConfig } from 'vite'
 
 // https://vite.dev/config/
 export default defineConfig({
-  // GitHub Pages sirve los repositorios de proyecto bajo /<nombre-del-repo>/.
-  base: '/convenio-mdsca-web/',
+  // El dominio personalizado innovacionpublica.es sirve la web desde la raíz.
+  base: '/',
   plugins: [react()],
 })
