@@ -71,7 +71,7 @@ export const partners = [
   },
   {
     initials: 'CDL',
-    logo: '/Logo_cdl.jpg',
+    logo: '/Logo_cdl.svg',
     logoAlt: 'Logotipo de CyberDataLab de la Universidad de Murcia',
     name: 'CyberDataLab · Universidad de Murcia',
     type: 'Investigación científica y tecnológica',

@@ -46,7 +46,6 @@ export function Participants() {
                   <div className={`participant-identity ${partner.tone}`}>
                     <span className="participant-number">0{index + 1}</span>
                     <div className="institution-logo">
-                      <span aria-hidden="true">{partner.initials}</span>
                       <img src={assetUrl(partner.logo)} alt={partner.logoAlt} />
                     </div>
                   </div>
