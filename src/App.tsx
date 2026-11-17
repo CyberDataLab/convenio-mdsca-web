@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { AppLink } from './components/AppLink'
 import { project } from './content'
+import { hasPublishedNews } from './noticias'
 import { getRoute, routes } from './routes'
 import type { Route } from './routes'
 import { assetUrl } from './assetUrl'
@@ -61,7 +62,7 @@ function Footer() {
 
 function CurrentView({ route }: { route: Route }) {
   if (route === '/participantes') return <Participants />
-  if (route === '/actualidad') return <News />
+  if (route === '/actualidad' && hasPublishedNews) return <News />
   if (route.startsWith('/actualidad/')) return <NewsDetail slug={route.slice('/actualidad/'.length)} />
   return <Home />
 }

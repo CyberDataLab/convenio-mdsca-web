@@ -42,7 +42,7 @@ npm run dev
 | Imágenes y logotipos públicos | [`public/`](public/) |
 | Originales editables de GIMP | [`design/noticias/`](design/noticias/) |
 
-Las noticias con `published: false` solo se muestran en desarrollo. La navegación usa rutas con `#`, compatibles con GitHub Pages.
+«Actualidad», «Ver noticias» y «Últimos avances» solo se muestran cuando hay alguna noticia con `published: true`. Los listados incluyen únicamente noticias publicadas. Los borradores (`published: false`) se pueden previsualizar en desarrollo abriendo directamente `/#/actualidad/<slug>`. La navegación usa rutas con `#`, compatibles con GitHub Pages.
 
 ## Publicación
 

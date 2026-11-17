@@ -1,11 +1,15 @@
+import { hasPublishedNews } from './noticias'
+
 export type StaticRoute = '/' | '/participantes' | '/actualidad'
 export type Route = StaticRoute | `/actualidad/${string}`
 
-export const routes: { href: StaticRoute; label: string }[] = [
+const allRoutes: { href: StaticRoute; label: string }[] = [
   { href: '/', label: 'Inicio' },
   { href: '/participantes', label: 'Participantes' },
   { href: '/actualidad', label: 'Actualidad' },
 ]
+
+export const routes = allRoutes.filter((route) => route.href !== '/actualidad' || hasPublishedNews)
 
 export function getRoute(): Route {
   const path = window.location.hash.replace(/^#/, '').replace(/\/$/, '') || '/'

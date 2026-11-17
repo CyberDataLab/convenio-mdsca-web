@@ -1,13 +1,13 @@
 import { useState } from 'react'
 import { NewsCard } from '../components/NewsCard'
 import { PageHeader } from '../components/PageHeader'
-import { news } from '../noticias'
+import { publishedNews } from '../noticias'
 import { getNewsCategoryClass } from '../newsVisual'
 
 export function News() {
   const [filter, setFilter] = useState('Todas')
-  const categories = ['Todas', ...new Set(news.map((item) => item.category))]
-  const visibleNews = filter === 'Todas' ? news : news.filter((item) => item.category === filter)
+  const categories = ['Todas', ...new Set(publishedNews.map((item) => item.category))]
+  const visibleNews = filter === 'Todas' ? publishedNews : publishedNews.filter((item) => item.category === filter)
 
   return (
     <main>

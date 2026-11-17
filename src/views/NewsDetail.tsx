@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { AppLink } from '../components/AppLink'
 import { NewsCard } from '../components/NewsCard'
 import { project } from '../content'
-import { news } from '../noticias'
+import { hasPublishedNews, news, publishedNews } from '../noticias'
 import type { NewsImage } from '../noticias/types'
 import { getNewsCategoryClass } from '../newsVisual'
 import { assetUrl } from '../assetUrl'
@@ -39,13 +39,13 @@ export function NewsDetail({ slug }: NewsDetailProps) {
           <p className="eyebrow">Actualidad</p>
           <h1>Esta noticia no está disponible</h1>
           <p>Es posible que la dirección haya cambiado o que el contenido todavía no se haya publicado.</p>
-          <AppLink href="/actualidad" className="button article-button"><span aria-hidden="true">←</span> Volver a Actualidad</AppLink>
+          <AppLink href={hasPublishedNews ? '/actualidad' : '/'} className="button article-button"><span aria-hidden="true">←</span> {hasPublishedNews ? 'Volver a Actualidad' : 'Volver al inicio'}</AppLink>
         </div>
       </main>
     )
   }
 
-  const related = news.filter((item) => item.slug !== article.slug).slice(0, 2)
+  const related = publishedNews.filter((item) => item.slug !== article.slug).slice(0, 2)
   const categoryClass = getNewsCategoryClass(article.category)
 
   return (
@@ -53,7 +53,7 @@ export function NewsDetail({ slug }: NewsDetailProps) {
       <article className={categoryClass}>
         <header className="article-header">
           <div className="container">
-            <AppLink href="/actualidad" className="article-back"><span aria-hidden="true">←</span> Actualidad</AppLink>
+            <AppLink href={hasPublishedNews ? '/actualidad' : '/'} className="article-back"><span aria-hidden="true">←</span> {hasPublishedNews ? 'Actualidad' : 'Inicio'}</AppLink>
             <p className="article-meta"><span className="news-category">{article.category}</span><span aria-hidden="true">·</span>{article.date}</p>
             <h1>{article.title}</h1>
             <p className="article-lead">{article.excerpt}</p>
@@ -93,18 +93,20 @@ export function NewsDetail({ slug }: NewsDetailProps) {
               <div><span>Publicado</span><strong>{article.date}</strong></div>
               <div><span>Categoría</span><strong>{article.category}</strong></div>
               <div><span>Convenio</span><strong>{project.shortName}</strong></div>
-              <AppLink href="/actualidad" className="article-return">Volver a Actualidad <span aria-hidden="true">→</span></AppLink>
+              <AppLink href={hasPublishedNews ? '/actualidad' : '/'} className="article-return">{hasPublishedNews ? 'Volver a Actualidad' : 'Volver al inicio'} <span aria-hidden="true">→</span></AppLink>
             </aside>
           </div>
         </section>
       </article>
 
-      <section className="related-section section">
-        <div className="container">
-          <div className="section-heading row"><div><p className="eyebrow">Sigue leyendo</p><h2>Noticias relacionadas</h2></div><AppLink href="/actualidad" className="text-link">Ver todas <span>→</span></AppLink></div>
-          <div className="related-grid">{related.map((item) => <NewsCard key={item.slug} item={item} />)}</div>
-        </div>
-      </section>
+      {related.length > 0 && (
+        <section className="related-section section">
+          <div className="container">
+            <div className="section-heading row"><div><p className="eyebrow">Sigue leyendo</p><h2>Noticias relacionadas</h2></div><AppLink href="/actualidad" className="text-link">Ver todas <span>→</span></AppLink></div>
+            <div className="related-grid">{related.map((item) => <NewsCard key={item.slug} item={item} />)}</div>
+          </div>
+        </section>
+      )}
 
       {activeImage && (
         <div

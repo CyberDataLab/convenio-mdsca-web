@@ -1,7 +1,7 @@
 import { AppLink } from '../components/AppLink'
 import { NewsCard } from '../components/NewsCard'
 import { context, highlights, methodology, objectives, project, quickFacts } from '../content'
-import { news } from '../noticias'
+import { hasPublishedNews, publishedNews } from '../noticias'
 import { assetUrl } from '../assetUrl'
 
 export function Home() {
@@ -17,7 +17,7 @@ export function Home() {
           <div className="hero-actions">
             <a className="button primary" href="#convenio">Conocer el convenio <span aria-hidden="true">→</span></a>
             <AppLink className="button secondary" href="/participantes">Ver participantes</AppLink>
-            <AppLink className="button secondary" href="/actualidad">Ver noticias</AppLink>
+            {hasPublishedNews && <AppLink className="button secondary" href="/actualidad">Ver noticias</AppLink>}
           </div>
         </div>
         <div className="hero-meta" aria-label="Datos principales del convenio">
@@ -70,12 +70,14 @@ export function Home() {
         </div>
       </section>
 
-      <section className="latest-section section">
-        <div className="container">
-          <div className="section-heading row"><div><p className="eyebrow">Actualidad</p><h2>Últimos avances</h2></div><AppLink href="/actualidad" className="text-link">Ver todas <span>→</span></AppLink></div>
-          <div className="news-grid">{news.map((item) => <NewsCard item={item} key={item.title} />)}</div>
-        </div>
-      </section>
+      {hasPublishedNews && (
+        <section className="latest-section section">
+          <div className="container">
+            <div className="section-heading row"><div><p className="eyebrow">Actualidad</p><h2>Últimos avances</h2></div><AppLink href="/actualidad" className="text-link">Ver todas <span>→</span></AppLink></div>
+            <div className="news-grid">{publishedNews.map((item) => <NewsCard item={item} key={item.slug} />)}</div>
+          </div>
+        </section>
+      )}
     </main>
   )
 }
