@@ -1,8 +1,10 @@
+import { ministeriovisitaUMU } from './ministeriovisitaUMU'
 import { presentacionLUCIA } from './presentacion LUCIA'
 import type { NewsItem } from './types'
 
 const allNews: NewsItem[] = [
-  presentacionLUCIA
+  presentacionLUCIA,
+  ministeriovisitaUMU
 ]
 
 export const publishedNews = allNews.filter((item) => item.published)
